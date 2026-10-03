@@ -17,8 +17,10 @@ public class Main {
         passed += testT3() ? 1 : 0;
         passed += testT4() ? 1 : 0;
         passed += testT5() ? 1 : 0;
+        passed += testT6() ? 1 : 0;
+        passed += testT7() ? 1 : 0;
 
-        System.out.println("SUMMARY: " + passed + "/5 PASS");
+        System.out.println("SUMMARY: " + passed + "/7 PASS");
     }
 
     private static boolean testT1() {
@@ -172,6 +174,52 @@ public class Main {
                             " | expectedAfter=" + expectedAfter
             );
         }
+
+        return pass;
+    }
+
+    private static boolean testT6() {
+        Circle circle = new Circle(
+                "C1",
+                new AsciiRenderer(),
+                2
+        );
+
+        String actual = circle.execute();
+        String expected = "ASCII circle radius=2";
+
+        boolean pass = actual.equals(expected);
+
+        printResult(
+                "T6",
+                pass,
+                "Circle + AsciiRenderer",
+                actual,
+                expected
+        );
+
+        return pass;
+    }
+
+    private static boolean testT7() {
+        Square square = new Square(
+                "S1",
+                new AsciiRenderer(),
+                3
+        );
+
+        String actual = square.execute();
+        String expected = "ASCII square side=3";
+
+        boolean pass = actual.equals(expected);
+
+        printResult(
+                "T7",
+                pass,
+                "Square + AsciiRenderer",
+                actual,
+                expected
+        );
 
         return pass;
     }
